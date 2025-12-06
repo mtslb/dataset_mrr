@@ -9,6 +9,8 @@ def load_data(path):
     df = df.fillna(0)
     if "staff" in df.columns:
         df = df.drop(columns=["staff"])
+    if "recommendation_mal_id" in df.columns:
+        df = df.drop(columns=["recommendation_mal_id"])
     return df
 
 def split_features_targets(df, targets=["y_score", "y_members"]):
