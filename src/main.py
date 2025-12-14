@@ -35,6 +35,8 @@ def run_pipeline(start_year=2010, models_to_run=None):
     df_reco = aggregate_recommendation_stats(df_encoded)
     df_final = aggregate_staff_stats(df_reco)
 
+    df_final=df_final.dropna()
+
     final_path = PROCESSED / f"anime_features_{start_year}.csv"
     if not final_path.exists(): 
         df_final.to_csv(final_path, index=False)
